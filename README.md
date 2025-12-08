@@ -6,7 +6,7 @@ This repository contains two distinct predictive maintenance projects aimed at o
 
 ## **Project 1: Failure Classification (7-Day Window)**
 ### **Objective**
-The goal of this module is to classify whether a piece of industrial equipment will experience a failure within the next ***7 days***. This creates an immediate alert system for maintenance teams to react to imminent breakdowns.
+The goal of this module is to classify whether a piece of industrial equipment will experience a failure within the next **7 days**. This creates an immediate alert system for maintenance teams to react to imminent breakdowns.
 
 ### **Feature Engineering Strategy**
 The raw dataset contained null values for features specific to certain machine types. To test the models' robustness, I compared two approaches:
