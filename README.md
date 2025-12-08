@@ -15,6 +15,17 @@ The raw dataset contained null values for features specific to certain machine t
 
 **Enhanced (Binary Flags)**: The dataset enriched with new binary features indicating if a specific sensor reading is applicable to that machine (e.g., `has_laser`, `has_hydraulics`).
 
+### **Key Findings**
+- Both XGBoost and LightGBM achieve a balanced accuracy ≈ 0.82 (LightGBM slightly higher), indicating strong overall ability to discriminate between failure / non-failure.
+- Similar performance on the baseline (original missing values) and enhanced (binary applicability flags) datasets suggests both tree models handle the dataset's missingness well without heavy preprocessing.
+- Models were trained with simple configs (e.g., max_depth=6). Reported performance is promising but likely improvable with tuning and careful validation.
+
+### **Recommendations**
+- Prioritize recall (sensitivity) and precision for the failure class, plus PR-AUC and confusion-matrix cost analysis because missing a true failure is far more costly than a false positive.
+- Instead of relying only on binary applicability flags, run experiments that impute missing sensor values.
+- Run grid/random search or Bayesian optimization (e.g., Optuna) over key hyperparameters (learning rate, num_leaves/estimators, max_depth).
+
+
 ## **Project 2: Remaining Useful Life (RUL) Regression**
 ### **Objective**
 The goal of this module is to predict the exact ***Remaining Useful Life (RUL)*** of equipment in days. This allows for long-term resource planning and inventory management.
@@ -32,3 +43,9 @@ Planning major maintenance (ordering parts, scheduling downtime) requires approx
 Evaluated the models by segmenting the *R<sup>2</sup>* score:
 1. **RUL > 100 Days:** General health monitoring.
 2. **RUL < 100 Days:** Critical planning phase.
+
+### **Key Findings**
+-
+
+### **Recommendations**
+- 
