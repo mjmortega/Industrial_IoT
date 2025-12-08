@@ -45,7 +45,13 @@ Evaluated the models by segmenting the *R<sup>2</sup>* score:
 2. **RUL < 100 Days:** Critical planning phase.
 
 ### **Key Findings**
--
+- Both XGBoost and LightGBM achieve very high overall R2 (≈ 0.97) when trained on the larger dataset but only a small improvement over the SMOGN-augmented small training set.
+- SMOGN increases examples in the low-RUL region, improving model exposure to critical cases but did not close the performance gap for RUL < 100 days.
+- Current features are snapshot-style; time-series features (lags, slopes, rolling stats) or explicit degradation indicators are not present but could improve low-RUL predictions.
 
 ### **Recommendations**
-- 
+- Include MAE @ < 100 as a top KPI.
+- Train with a loss that penalizes errors more strongly when y_true < 100 (weighted MAE/MSE)
+- Systematically compare (a) SMOGN and (b) targeted upsampling of real low-RUL examples (if possible).
+- Tune hyperparameters.
+- Train per-Machine_Type models when enough data exists.
